@@ -22,11 +22,13 @@ If you want to work on `cvmfs` on macbooks with full fledged docker containers, 
 ## Setting up cvmfs
 
 ```bash
+
 # autofs is meant for linux systems
 #sudo systemctl enable autofs
 #sudo systemctl restart autofs
 
 # Needs to be done only once
+
 sudo mkdir -p /cvmfs/atlas.cern.ch
 sudo mkdir -p /cvmfs/atlas-nightlies.cern.ch
 sudo mkdir -p /cvmfs/atlas-condb.cern.ch
@@ -36,6 +38,7 @@ sudo mkdir -p /cvmfs/unpacked.cern.ch
 sudo mkdir -p /cvmfs/grid.cern.ch
 
 # Needs to be done after each reboot
+
 sudo mount -t cvmfs atlas.cern.ch /cvmfs/atlas.cern.ch
 sudo mount -t cvmfs atlas-nightlies.cern.ch /cvmfs/atlas-nightlies.cern.ch
 sudo mount -t cvmfs atlas-condb.cern.ch /cvmfs/atlas-condb.cern.ch
@@ -45,12 +48,14 @@ sudo mount -t cvmfs unpacked.cern.ch /cvmfs/unpacked.cern.ch
 sudo mount -t cvmfs grid.cern.ch /cvmfs/grid.cern.ch
 
 sudo cvmfs_config setup
+
 #Some cvmfs diagnostic commands
  #sudo cvmfs_config chksetup
  #sudo cvmfs_config probe
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 alias setupATLAS='source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
+
 #setupATLAS -q -c centos7
 setupATLAS -q -c el9
 lsetup git
@@ -71,14 +76,15 @@ Make sure the `~/.globus` folder from lxplus having `usercert.pem` & `userkey.pe
 Do the following, provided you see that `cvmfs` is mounted at `/cvmfs`
 
 ```bash
+cd /etc
 sudo cp -r /cvmfs/grid.cern.ch/etc/grid-security .
 ```
-### Optional: Locally installing voms client and rucio
+### Optional: Locally installing VOMS client and rucio
 
 This assumes you have `anaconda3` installed using a required `python3.x` version
 If not, use this resource: [Anaconda Python Distrib](https://anaconda.org)
 
-Resources: 
+Resources for downloading local VOMS and rucio: 
 - [Conda-forge VOMS](https://anaconda.org/conda-forge/voms)
 - [Conda-forge Rucio](https://github.com/conda-forge/rucio-clients-feedstock)
 
@@ -107,7 +113,7 @@ lsetup git
 voms-proxy-init -voms atlas --vomses /cvmfs/grid.cern.ch/etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses
 ```
 >[!NOTE]
->If you want to renew the proxy locally to access grid without setting up cvmfs, the optional steps become mandatory, when these commands are issued standlone, outside of the respective cvmfs environment.
+>If you want to renew the proxy locally to access grid without setting up cvmfs, the optional steps become mandatory, when these commands are issued standlone and outside of the respective cvmfs environment.
 >Also ensure that your conda environment is active
 > To locally setup `grid-proxy` do the following below, assuming you have downloaded/copied `grid-security` under `/etc`
 >`voms-proxy-init -voms atlas --vomses /etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses`
