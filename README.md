@@ -1,6 +1,6 @@
 # CVMFS on MacBooks
 
-Instructions to run cvmfs and grid scripts on macbook
+Instructions to run cvmfs and grid scripts on MacBooks. The following has been tested out on Sonoma.
 
 Assumes you have `xcode` command line tools (see [xcode](https://developer.apple.com/xcode/resources/)) installed on your macbook and preferably use `iterm` as your terminal and `zsh` as your default shell.
 
