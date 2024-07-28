@@ -1,12 +1,12 @@
-# CVMFS on MacBooks
+# CVMFS on MacBook
 
-Instructions to run cvmfs and grid scripts on MacBooks. The following has been tested out on Sonoma.
+Instructions to run cvmfs and grid scripts on a MacBook. The following has been tested out on Sonoma.
 
-Assumes you have `xcode` command line tools (see [xcode](https://developer.apple.com/xcode/resources/)) installed on your macbook and preferably use `iterm` as your terminal and `zsh` as your default shell.
+Assumes you have `xcode` command line tools (see [xcode](https://developer.apple.com/xcode/resources/)) installed on your MacBook and preferably use `iterm` as your terminal and `zsh` as your default shell.
 
 ## Downloading requirements
 
-If you want to work on `cvmfs` on macbooks with full fledged docker containers, do the following:
+If you want to work on `cvmfs` on MacBooks with full fledged docker containers, do the following:
 - Download & install Docker Desktop daemon from [Docker-Official](https://www.docker.com/products/docker-desktop/)
 - Download & install macFUSE from [macFUSE](https://osxfuse.github.io)
    - This will require you to allow the package by Benjamin F from Settings> Privacy & Security>Privacy
