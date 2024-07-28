@@ -129,14 +129,14 @@ voms-proxy-init -voms atlas --vomses /cvmfs/grid.cern.ch/etc/grid-security/vomse
   auth_host = https://atlas-rucio-auth.cern.ch:443
   ca_cert = /etc/grid-security/certificates
   auth_type = x509_proxy
-  account = <cern username>
+  account = <CERN username>
   client_cert = ~/.globus/usercert.pem
   client_key = ~/.globus/userkey.pem
 ```
 >[!TIP]
 >Optional: To be sure, you can also put the following lines in a script and source that script.
 >```bash
->export RUCIO_ACCOUNT=<CERN_USERNAME>
+>export RUCIO_ACCOUNT=<CERN username>
 >export RUCIO_AUTH_TYPE=x509_proxy
 >export X509_CERT_DIR=/cvmfs/grid.cern.ch/etc/grid-security/certificates
 >export X509_USER_CERT=$HOME/.globus/usercert.pem
