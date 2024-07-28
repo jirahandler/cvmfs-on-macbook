@@ -116,7 +116,9 @@ voms-proxy-init -voms atlas --vomses /cvmfs/grid.cern.ch/etc/grid-security/vomse
 >If you want to renew the proxy locally to access grid without setting up cvmfs, the optional steps become mandatory, when these commands are issued standlone and outside of the respective cvmfs environment.
 >Also ensure that your conda environment is active
 > To locally setup `grid-proxy` do the following below, assuming you have downloaded/copied `grid-security` under `/etc`
->`voms-proxy-init -voms atlas --vomses /etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses`
+>```bash
+>voms-proxy-init -voms atlas --vomses /etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses
+>```
 
 >[!NOTE]
 >Finally to make rucio work locally, have these directives in `~/.rucio/rucio.cfg` for in container cvmfs use or `/opt/rucio/etc/rucio.cfg` , for standalone (optional) use. The `~/.rucio/rucio.cfg` usually overrides other root configs.
