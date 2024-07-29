@@ -1,8 +1,8 @@
 # CVMFS on MacBook
 
-Instructions to run cvmfs and grid scripts on a MacBook. The following has been tested out on Sonoma.
+This repo has instructions to run `cvmfs`, `grid-proxy` and `rucio` on a MacBook. The following has been tested out on Mac OS Sonoma.
 
-Assumes you have `xcode` command line tools (see [xcode](https://developer.apple.com/xcode/resources/)) installed on your MacBook and preferably use `iterm` as your terminal and `zsh` as your default shell.
+Instrcutions assume that you have `xcode` command line tools (see [xcode](https://developer.apple.com/xcode/resources/)) installed on your MacBook, preferably use `iterm` as your terminal, and `zsh` as your default shell.
 
 ## Downloading requirements
 
@@ -11,13 +11,13 @@ If you want to work on `cvmfs` on MacBooks with full fledged docker containers, 
 - Download & install macFUSE from [macFUSE](https://osxfuse.github.io)
    - This will require you to allow the package by Benjamin F from Settings> Privacy & Security>Privacy
    - Click on allow
-   - You have to restart the system to ensure macfuse modules work
+   - You will have to restart the system to ensure macfuse modules work
 - Download & install the version for MacOS Silicon (M1/M2) as mentioned here under MacOS : [CVMFS Readme](https://cvmfs.readthedocs.io/en/stable/cpt-quickstart.html)
 - You might have to restart the system once again
 - Then do the following step by step
 
 >[!NOTE]
->You can club only certain commands in a single script. If you source the script, not everything will be executed due to shell spawning.
+>Only certain commands can be clubbed in a single script. If you source the script, not everything will be executed due to shell spawning.
 
 ## Setting up cvmfs
 
@@ -60,7 +60,7 @@ alias setupATLAS='source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
 setupATLAS -q -c el9
 lsetup git
 ```
-Then create `default.local` in `/etc/cvmfs/` with the following content:
+Thereafter, create `default.local` in `/etc/cvmfs/` with the following content:
 
 ```bash
 CVMFS_REPOSITORIES='atlas.cern.ch,atlas-nightlies.cern.ch,atlas-condb.cern.ch,grid.cern.ch,sft.cern.ch,sft-nightlies.cern.ch,unpacked.cern.ch '
@@ -69,11 +69,11 @@ CVMFS_HTTP_PROXY=DIRECT
 ```
 ## Grid Certificate Setup
 
-Make sure the `~/.globus` folder from lxplus having `usercert.pem` & `userkey.pem` is stored in your MacBook's home directory `~/` and make sure the `.pem` files have appropriate octal `600` permissions for your local user.
+Ensure that the `~/.globus` folder from lxplus having `usercert.pem` & `userkey.pem` is stored in your MacBook's home directory `~/` and that the `.pem` files have appropriate octal permissions for your local user.
 
 ### Downloading grid-security folder locally
 
-Do the following, provided you see that `cvmfs` is mounted at `/cvmfs`
+Do the following, provided you see that `cvmfs` is mounted on `root` as `/cvmfs` .
 
 ```bash
 cd /etc
@@ -113,15 +113,16 @@ lsetup git
 voms-proxy-init -voms atlas --vomses /cvmfs/grid.cern.ch/etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses
 ```
 >[!NOTE]
->If you want to renew the proxy locally to access grid without setting up cvmfs, the optional steps become mandatory, when these commands are issued standlone and outside of the respective cvmfs environment.
->Also ensure that your conda environment is active
-> To locally setup `grid-proxy` do the following below, assuming you have downloaded/copied `grid-security` under `/etc`
+>If you want to renew the `grid-proxy` locally to access the grid without setting up `cvmfs`, the optional steps become mandatory.
+>These commands are issued standalone and outside of the respective cvmfs environment.
+>Please ensure that your conda environment is active
+>To locally setup `grid-proxy` do the following, assuming you have downloaded/copied `grid-security` under `/etc`
 >```bash
 >voms-proxy-init -voms atlas --vomses /etc/grid-security/vomses/voms-atlas-auth.app.cern.ch.vomses
 >```
 
 >[!NOTE]
->Finally to make rucio work locally, have these directives in `~/.rucio/rucio.cfg` for in container cvmfs use or `/opt/rucio/etc/rucio.cfg` , for standalone (optional) use. The `~/.rucio/rucio.cfg` usually overrides other root configs.
+>Finally to make rucio work locally, have these directives in `~/.rucio/rucio.cfg` for in-container cvmfs use or `/opt/rucio/etc/rucio.cfg` , for standalone (optional) use. The `~/.rucio/rucio.cfg` usually overrides other root level default configs.
 
 ```bash
 [client]
