@@ -7,12 +7,12 @@ Instrcutions assume that you have `xcode` command line tools (see [xcode](https:
 ## Downloading requirements
 
 If you want to work on `cvmfs` on MacBooks with full fledged docker containers, do the following:
-- Download & install Docker Desktop daemon from [Docker-Official](https://www.docker.com/products/docker-desktop/)
+- Download & install Docker Desktop daemon from [Docker Official Site](https://www.docker.com/products/docker-desktop/)
 - Download & install macFUSE from [macFUSE](https://osxfuse.github.io)
    - This will require you to allow the package by Benjamin F from Settings> Privacy & Security>Privacy
    - Click on allow
    - You will have to restart the system to ensure macfuse modules work
-- Download & install the version for MacOS Silicon (M1/M2) as mentioned here under MacOS : [CVMFS Readme](https://cvmfs.readthedocs.io/en/stable/cpt-quickstart.html)
+- Download & install the version for MacOS Silicon (M1/M2) as mentioned here, under MacOS : [CVMFS Readme](https://cvmfs.readthedocs.io/en/stable/cpt-quickstart.html)
 - You might have to restart the system once again
 - Then do the following step by step
 
